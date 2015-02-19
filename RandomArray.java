@@ -12,15 +12,12 @@ class RandomArray {
   public static final int ARRAY_SIZE = 10;
   public static final int RANINT_MAX = 50;
 
-  public static void main(String args[]) {
+  public static void generateRandom() {
     int[] data = new int[ARRAY_SIZE];
     Random random = new Random();
     
     for (int i = 0; i < ARRAY_SIZE; ++i) {
       data[i] = random.nextInt(RANINT_MAX);   
     }
-
-    System.out.println("Array Generated: ");
-    System.out.println(Arrays.toString(data));
   }
 }
