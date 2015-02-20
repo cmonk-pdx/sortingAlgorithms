@@ -39,12 +39,12 @@ public class MergeSort {
 				k++;
 			}
 			//If one sub-array is completely copied, copy the remaining elements from the other sub-array
-			while (j != lengthArray2) {
+			while (j < lengthArray2) {
 				inputArray[k] = array2[j];
 				j++;
 				k++;
 			}
-			while (i != lengthArray1) {
+			while (i < lengthArray1) {
 				inputArray[k] = array1[i];
 				i++;
 				k++;
