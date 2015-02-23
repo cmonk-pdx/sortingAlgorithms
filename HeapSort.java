@@ -58,7 +58,7 @@ public class HeapSort {
     }
     
     public static void main(String[] args){
-    	int[] a1 = RandomArray.generateRandom(10);
+    	int[] a1 = { 3, 2, 1, 5, 4 };
         
         for(int i = 0; i < a1.length; i++)
             System.out.print(a1[i] + " ");    
