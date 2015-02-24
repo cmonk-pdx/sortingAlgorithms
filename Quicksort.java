@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 // HeapSort implementation for sorting project
 //
@@ -8,44 +9,51 @@ import java.util.Arrays;
 
 public class Quicksort {
 
-	public int[] quicksort(int[] inputArray, int low, int high) {
-		int s = 0;
-		
+	public void quicksort(int[] inputArray, int low, int high) {
 		if(low < high) {
-			s = partition(inputArray, low, high);
-			quicksort(inputArray, low, s-1);
-			quicksort(inputArray, s+1, high);
+			int s = partition(inputArray, low, high);
+			if(low < s - 1)
+				quicksort(inputArray, low, s-1);
+			if(s < high)
+				quicksort(inputArray, s, high);
 		}
-		return inputArray;
+		//return inputArray;
 	}
 	
 	// Input: An array[l...r] of integers
 	// Partition is always the first element
 	// Output: The split position
 	public int partition(int[] data, int l, int r) {
-		if(l >= r) {
-			return r; //Not sure what I should return in this case...
-		}
-		int pivotValue = data[l];
+		int pivotIndex = randomBetween(l, r);
+		int pivotValue = data[pivotIndex];
 		int i = l;
-		int j = r+1;
+		int j = r;
 		
-		do {
-			do {
-				i++; //This goes out of bounds. Book mentions adding a sentinal if not using random pivot
-			} while(data[i] >= pivotValue); 
-			do {
+		while (i <= j) {
+			while(data[i] < pivotValue) {
+				i++; 
+			}
+			while(data[j] > pivotValue){
 				j--;
-			} while(data[j] <= pivotValue);
-			System.out.println(Arrays.toString(data));
-			swap(data, i, j);
-			System.out.println(Arrays.toString(data));
-		} while(i >= j);
-		swap(data, i, j);
-		swap(data, 0, j);
-		
-		return j;
+			}
+			if (i <= j) {
+		     swap(data, i, j);
+		     i++;
+		     j--;
+		    } 
+		}
+		return i;
 	}
+	
+	
+	public int randomBetween(int l, int r) {
+	   int n;
+	   Random random = new Random();
+	   n = random.nextInt(r - l + 1) + l; // random between l inclusive and r exclusive
+	   System.out.println("Random: " + n );
+	   return n;
+	}
+	
 	
 	public void swap(int[] list, int a, int b) {
 		int tmp = list[a];
@@ -53,15 +61,14 @@ public class Quicksort {
 		list[b] = tmp;
 	}
 	
+	
 	public static void main(String args[]) {
-		int[] unsorted = RandomArray.generateRandom(10);
+		int[] unsorted = RandomArray.generateRandom(20);
 		Quicksort q = new Quicksort();
 		
-		System.out.print("Unsorted array: " + Arrays.toString(unsorted));
-		System.out.println();
-
-		int[] sorted = q.quicksort(unsorted, 0, unsorted.length);
-		System.out.print("Sorted array:   " + Arrays.toString(sorted));
-		System.out.println();
+		
+		System.out.println("Unsorted array: " + Arrays.toString(unsorted));
+	    q.quicksort(unsorted, 0, unsorted.length-1);
+		System.out.println("Sorted array:   " + Arrays.toString(unsorted));
 	}
 }
