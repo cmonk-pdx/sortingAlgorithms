@@ -16,3 +16,9 @@ To import Repo as an Eclipse Project:
 Now when you go to the project Explorer, the files will be there!  Woot!
 
 To run the file, run the testSuite with a file name argument (e.g. src/tst_data/10_Almost_Sorted.csv) and you should see output!
+
+
+If you get a non fast-forward rejection when committing, make sure your local/remote branches are merged:
+  http://stackoverflow.com/questions/19474186/egit-rejected-non-fast-forward
+
+To run all the JUnit tests at once, Run the AllTests as a Junit Test. This is a Junit Test Suite which will execute all the tests at once.

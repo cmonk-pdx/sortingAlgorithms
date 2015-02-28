@@ -10,15 +10,17 @@
 //
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class testSuite {
 	
 	public static void main(String [] args) {		
 		if(args.length == 1) {
 			try {
-				int[] data;
+				int[] data;				
 				File file = new File(args[0]);
 				Scanner in = new Scanner(file);
 
@@ -35,13 +37,14 @@ public class testSuite {
 					
 					MergeSort m = new MergeSort();
 					QuickSort q = new QuickSort();
-					//Heapsort h = new HeapSort();
+					HeapSort h = new HeapSort();
 					System.out.println(Arrays.toString(data));
 					
 					long startTime = System.nanoTime(); // Start the timing!
 					
 					//m.mergeSort(data);
 					//q.quicksort(data, 0, data.length);
+					// I don't know how to call heapsort as we have it.. 
 					
 					long endTime = System.nanoTime(); // Finish the timing!
 
