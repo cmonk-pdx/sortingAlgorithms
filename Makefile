@@ -8,5 +8,13 @@ JC = javac
 
 RandomArray: RandomArray.class
 
+MergeSort: Mergesort.class
+
+QuickSort: Quicksort.class
+
+HeapSort: Heapsort.class
+
+TestSuite: SortingTestSuite.class
+
 clean: 
 	rm *.class
